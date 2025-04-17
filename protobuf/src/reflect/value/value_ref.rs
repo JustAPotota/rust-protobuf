@@ -458,3 +458,23 @@ impl<'a> TryFrom<ReflectValueRef<'a>> for &'a [u8] {
         }
     }
 }
+
+impl<'a> TryFrom<ReflectValueRef<'a>> for (EnumDescriptor, i32) {
+    type Error = ();
+    fn try_from(value: ReflectValueRef<'a>) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueRef::Enum(v1, v2) => Ok((v1, v2)),
+            _ => Err(()),
+        }
+    }
+}
+
+impl<'a> TryFrom<ReflectValueRef<'a>> for MessageRef<'a> {
+    type Error = ();
+    fn try_from(value: ReflectValueRef<'a>) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueRef::Message(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
