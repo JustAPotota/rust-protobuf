@@ -368,3 +368,93 @@ impl<'a> From<&'a [u8]> for ReflectValueRef<'a> {
         ReflectValueRef::Bytes(v)
     }
 }
+
+impl<'a> TryFrom<ReflectValueRef<'a>> for u32 {
+    type Error = ();
+    fn try_from(value: ReflectValueRef<'a>) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueRef::U32(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl<'a> TryFrom<ReflectValueRef<'a>> for u64 {
+    type Error = ();
+    fn try_from(value: ReflectValueRef<'a>) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueRef::U64(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl<'a> TryFrom<ReflectValueRef<'a>> for i32 {
+    type Error = ();
+    fn try_from(value: ReflectValueRef<'a>) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueRef::I32(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl<'a> TryFrom<ReflectValueRef<'a>> for i64 {
+    type Error = ();
+    fn try_from(value: ReflectValueRef<'a>) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueRef::I64(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl<'a> TryFrom<ReflectValueRef<'a>> for f32 {
+    type Error = ();
+    fn try_from(value: ReflectValueRef<'a>) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueRef::F32(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl<'a> TryFrom<ReflectValueRef<'a>> for f64 {
+    type Error = ();
+    fn try_from(value: ReflectValueRef<'a>) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueRef::F64(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl<'a> TryFrom<ReflectValueRef<'a>> for bool {
+    type Error = ();
+    fn try_from(value: ReflectValueRef<'a>) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueRef::Bool(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl<'a> TryFrom<ReflectValueRef<'a>> for &'a str {
+    type Error = ();
+    fn try_from(value: ReflectValueRef<'a>) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueRef::String(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl<'a> TryFrom<ReflectValueRef<'a>> for &'a [u8] {
+    type Error = ();
+    fn try_from(value: ReflectValueRef<'a>) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueRef::Bytes(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
