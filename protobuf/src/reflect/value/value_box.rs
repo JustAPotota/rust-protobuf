@@ -108,6 +108,96 @@ impl From<Box<dyn MessageDyn>> for ReflectValueBox {
     }
 }
 
+impl TryFrom<ReflectValueBox> for u32 {
+    type Error = ();
+    fn try_from(value: ReflectValueBox) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueBox::U32(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl TryFrom<ReflectValueBox> for u64 {
+    type Error = ();
+    fn try_from(value: ReflectValueBox) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueBox::U64(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl TryFrom<ReflectValueBox> for i32 {
+    type Error = ();
+    fn try_from(value: ReflectValueBox) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueBox::I32(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl TryFrom<ReflectValueBox> for i64 {
+    type Error = ();
+    fn try_from(value: ReflectValueBox) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueBox::I64(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl TryFrom<ReflectValueBox> for f32 {
+    type Error = ();
+    fn try_from(value: ReflectValueBox) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueBox::F32(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl TryFrom<ReflectValueBox> for f64 {
+    type Error = ();
+    fn try_from(value: ReflectValueBox) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueBox::F64(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl TryFrom<ReflectValueBox> for bool {
+    type Error = ();
+    fn try_from(value: ReflectValueBox) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueBox::Bool(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl TryFrom<ReflectValueBox> for String {
+    type Error = ();
+    fn try_from(value: ReflectValueBox) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueBox::String(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
+impl TryFrom<ReflectValueBox> for Vec<u8> {
+    type Error = ();
+    fn try_from(value: ReflectValueBox) -> Result<Self, Self::Error> {
+        match value {
+            ReflectValueBox::Bytes(v) => Ok(v),
+            _ => Err(()),
+        }
+    }
+}
+
 fn _assert_value_box_send_sync() {
     fn _assert_send_sync<T: Send + Sync>() {}
     _assert_send_sync::<ReflectValueBox>();
