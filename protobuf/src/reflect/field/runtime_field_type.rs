@@ -1,6 +1,7 @@
 use crate::reflect::RuntimeType;
 
 /// Reflective representation of field type.
+#[derive(Debug)]
 pub enum RuntimeFieldType {
     /// Singular field (required, optional for proto2 or singular for proto3)
     Singular(RuntimeType),
